@@ -65,6 +65,22 @@
                 "description": "Trimming mode for splitting the video item",
                 "value": "num_frames",
                 "_id": "undefined"
+              },
+              {
+                "id": "undefined",
+                "name": "frames_num",
+                "type": "Integer",
+                "description": "Number of frames to per video trim",
+                "value": "100",
+                "_id": "undefined"
+              },
+              {
+                "id": "undefined",
+                "name": "overlap",
+                "type": "Integer",
+                "description": "Number of overlapping frames per video trim",
+                "value": "0",
+                "_id": "undefined"
               }
             ],
             "description": "",
@@ -226,6 +242,7 @@
                     "type": "Integer",
                     "name": "splitter_arg",
                     "displayName": "splitter_arg",
+                    "variableName": "frames_num",
                     "io": "input"
                   },
                   {
@@ -234,6 +251,7 @@
                     "type": "Integer",
                     "name": "n_overlap",
                     "displayName": "n_overlap",
+                    "variableName": "overlap",
                     "io": "input"
                   }
                 ],
