@@ -10,347 +10,401 @@
     "scope": "organization",
     "components": {
         "pipelineTemplates": [
-            {
+          {
+            "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
+            "orgId": "353c6795-56cd-48b9-8a26-c2686fbd01c3",
+            "connections": [
+              {
+                "src": {
+                  "nodeId": "857933a8-e7fe-46e7-85ca-9d6dd6705d6c",
+                  "portId": "08ce0dcd-4fbd-4e9d-a145-c1aea342cf48"
+                },
+                "tgt": {
+                  "nodeId": "74aa2fcb-e66d-4c83-998f-557b67e415d2",
+                  "portId": "69f5784b-a951-4b62-b985-32c0c89f8f43"
+                },
+                "condition": "{}",
+                "action": "completed"
+              },
+              {
+                "src": {
+                  "nodeId": "93fe5a46-a212-4522-a836-d890cfb94290",
+                  "portId": "1550704d-e184-43a1-8112-db7963beafb2"
+                },
+                "tgt": {
+                  "nodeId": "857933a8-e7fe-46e7-85ca-9d6dd6705d6c",
+                  "portId": "202e6647-e264-4ada-b753-8e17fd8caaa8"
+                },
+                "condition": "{}"
+              },
+              {
+                "src": {
+                  "nodeId": "74aa2fcb-e66d-4c83-998f-557b67e415d2",
+                  "portId": "8b6f2e93-40e3-4591-8132-15d65c7d2b39"
+                },
+                "tgt": {
+                  "nodeId": "53a19a0c-d8c6-4444-acd4-d737a722338e",
+                  "portId": "5321bcf7-859a-4132-940e-322e835d6b19"
+                },
+                "condition": "{}",
+                "action": "continue"
+              }
+            ],
+            "startNodes": [
+              {
+                "nodeId": "93fe5a46-a212-4522-a836-d890cfb94290",
+                "type": "root",
+                "id": "8925fc34-dbba-4374-89f0-3ec685a1b695"
+              }
+            ],
+            "variables": [
+              {
+                "id": "undefined",
+                "name": "mode",
+                "type": "String",
+                "description": "Trimming mode for splitting the video item",
+                "value": "num_frames",
+                "_id": "undefined"
+              }
+            ],
+            "description": "",
+            "name": "video-trim-and-stitch-pipeline",
+            "templateKind": "org",
+            "nodes": [
+              {
+                "id": "857933a8-e7fe-46e7-85ca-9d6dd6705d6c",
+                "inputs": [
+                  {
+                    "portId": "202e6647-e264-4ada-b753-8e17fd8caaa8",
+                    "nodeId": "202e6647-e264-4ada-b753-8e17fd8caaa8",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "item",
+                    "io": "input"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "portId": "08ce0dcd-4fbd-4e9d-a145-c1aea342cf48",
+                    "nodeId": "08ce0dcd-4fbd-4e9d-a145-c1aea342cf48",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "Complete",
+                    "actions": [
+                      "completed",
+                      "discard"
+                    ],
+                    "io": "output"
+                  }
+                ],
+                "name": "Labeling",
+                "type": "task",
+                "namespace": {
+                  "functionName": "move_to_task",
+                  "projectName": "DataloopTasks",
+                  "serviceName": "pipeline-utils",
+                  "moduleName": "default_module",
+                  "packageName": "pipeline-utils"
+                },
+                "projectId": "f8a4b8ce-5ff3-4386-84dc-1bda3a5bc92a",
+                "metadata": {
+                  "position": {
+                    "x": 10192.697265625,
+                    "y": 9967.46875,
+                    "z": 0
+                  },
+                  "repeatable": true
+                }
+              },
+              {
+                "id": "74aa2fcb-e66d-4c83-998f-557b67e415d2",
+                "inputs": [
+                  {
+                    "portId": "69f5784b-a951-4b62-b985-32c0c89f8f43",
+                    "nodeId": "69f5784b-a951-4b62-b985-32c0c89f8f43",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "item",
+                    "io": "input"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "portId": "8b6f2e93-40e3-4591-8132-15d65c7d2b39",
+                    "nodeId": "8b6f2e93-40e3-4591-8132-15d65c7d2b39",
+                    "type": "Item",
+                    "name": "output_item",
+                    "displayName": "output_item",
+                    "actions": [
+                      "continue",
+                      "wait"
+                    ],
+                    "io": "output"
+                  }
+                ],
+                "name": "Wait For Cycle",
+                "type": "custom",
+                "namespace": {
+                  "functionName": "wait_for_cycle",
+                  "projectName": "templateTest",
+                  "serviceName": "wait-service",
+                  "moduleName": "wait_module",
+                  "packageName": "image-tiling-split-OFIR"
+                },
                 "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
-                "orgId": "353c6795-56cd-48b9-8a26-c2686fbd01c3",
-                "connections": [
-                    {
-                        "src": {
-                            "nodeId": "857933a8-e7fe-46e7-85ca-9d6dd6705d6c",
-                            "portId": "08ce0dcd-4fbd-4e9d-a145-c1aea342cf48"
-                        },
-                        "tgt": {
-                            "nodeId": "a012c6e2-ed5b-4c2b-95c2-72aa8ed09e56",
-                            "portId": "d764a17f-5647-4776-8b47-b921b06dc738"
-                        },
-                        "condition": "{}",
-                        "action": "completed"
+                "appName": "Image Tiling Split",
+                "dpkName": "image-tiling-split-OFIR",
+                "metadata": {
+                  "position": {
+                    "x": 10589.79296875,
+                    "y": 9966.478618909057,
+                    "z": 0
+                  },
+                  "serviceConfig": {
+                    "initParams": {
+
                     },
-                    {
-                        "src": {
-                            "nodeId": "a012c6e2-ed5b-4c2b-95c2-72aa8ed09e56",
-                            "portId": "2ea761c8-dc5a-4d28-9a35-398c5b3de46e"
-                        },
-                        "tgt": {
-                            "nodeId": "f15f9141-2ad8-4f41-b46b-7a373d2668b0",
-                            "portId": "ce931944-f775-4164-b697-e5d0aa47176d"
-                        },
-                        "condition": "{}",
-                        "action": "completed"
-                    }
-                ],
-                "startNodes": [
-                    {
-                        "nodeId": "e5017ebd-7a79-43f6-bd82-702b25f0360b",
-                        "type": "root",
-                        "id": "e59cf4c9-5ec7-4664-ba4b-dfd026c974e9"
-                    }
-                ],
-                "variables": [
-                ],
-                "description": "",
-                "name": "replace-name",
-                "templateKind": "org",
-                "nodes": [
-                    {
-                        "id": "f15f9141-2ad8-4f41-b46b-7a373d2668b0",
-                        "inputs": [
-                            {
-                                "portId": "ce931944-f775-4164-b697-e5d0aa47176d",
-                                "nodeId": "ce931944-f775-4164-b697-e5d0aa47176d",
-                                "type": "Item",
-                                "name": "item",
-                                "displayName": "item",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "fc49d891-dae0-4b44-8a36-644794335d66",
-                                "nodeId": "fc49d891-dae0-4b44-8a36-644794335d66",
-                                "type": "Json",
-                                "name": "dql_filter",
-                                "displayName": "dql_filter",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "babce07e-ee01-4e2a-a51c-708134b4b003",
-                                "nodeId": "babce07e-ee01-4e2a-a51c-708134b4b003",
-                                "type": "String",
-                                "name": "output_folder",
-                                "displayName": "output_folder",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "3b9118b3-9476-4037-8907-b9f1d374fdfb",
-                                "nodeId": "3b9118b3-9476-4037-8907-b9f1d374fdfb",
-                                "type": "String",
-                                "name": "output_video_type",
-                                "displayName": "output_video_type",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "d8ca285b-0c89-420d-a17e-7b3be86306e6",
-                                "nodeId": "d8ca285b-0c89-420d-a17e-7b3be86306e6",
-                                "type": "Integer",
-                                "name": "fps",
-                                "displayName": "fps",
-                                "io": "input"
-                            }
-                        ],
-                        "outputs": [
-                        ],
-                        "name": "Frames to Video Merge",
-                        "type": "custom",
-                        "namespace": {
-                            "functionName": "frames_to_vid",
-                            "projectName": "templateTest",
-                            "serviceName": "frames-to-video",
-                            "moduleName": "frames-to-video",
-                            "packageName": "video-utils-stitching-OFIR"
-                        },
-                        "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
-                        "appName": "[Video Utils] - Stitching",
-                        "dpkName": "video-utils-stitching-OFIR",
-                        "metadata": {
-                            "position": {
-                                "x": 10982.0927734375,
-                                "y": 9955.4912109375,
-                                "z": 0
-                            },
-                            "serviceConfig": {
-                                "initParams": {
-                                },
-                                "name": "frames-to-video",
-                                "moduleName": "frames-to-video",
-                                "runtime": {
-                                    "podType": "regular-xs",
-                                    "runnerImage": "dataloopai/dtlpy-agent:cpu.py3.8.opencv4.7",
-                                    "numReplicas": 1,
-                                    "concurrency": 10,
-                                    "pyPackages": {
-                                    },
-                                    "singleAgent": false,
-                                    "autoscaler": {
-                                        "type": "rabbitmq",
-                                        "minReplicas": 0,
-                                        "maxReplicas": 2,
-                                        "queueLength": 10
-                                    },
-                                    "preemptible": false
-                                },
-                                "maxAttempts": 3,
-                                "executionTimeout": 172800,
-                                "drainTime": 600,
-                                "onReset": "failed",
-                                "runExecutionAsProcess": false,
-                                "operation": "none"
-                            },
-                            "componentGroupName": "video-utils",
-                            "repeatable": true,
-                            "pipelineNodeName": "frames_to_video_merge"
-                        }
+                    "name": "wait-service",
+                    "moduleName": "wait_module",
+                    "runtime": {
+                      "podType": "regular-xs",
+                      "runnerImage": "dataloopai/dtlpy-agent:cpu.py3.8.opencv4.7",
+                      "numReplicas": 1,
+                      "concurrency": 1,
+                      "singleAgent": false,
+                      "autoscaler": {
+                        "type": "rabbitmq",
+                        "minReplicas": 0,
+                        "maxReplicas": 1,
+                        "queueLength": 10
+                      },
+                      "preemptible": false
                     },
-                    {
-                        "id": "e5017ebd-7a79-43f6-bd82-702b25f0360b",
-                        "inputs": [
-                            {
-                                "portId": "bcb18eb8-322e-4a2d-b22f-b0676852509e",
-                                "nodeId": "bcb18eb8-322e-4a2d-b22f-b0676852509e",
-                                "type": "Item",
-                                "name": "item",
-                                "displayName": "item",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "761ec875-9fe5-4b4f-b1e5-635983fd17d8",
-                                "nodeId": "761ec875-9fe5-4b4f-b1e5-635983fd17d8",
-                                "type": "String",
-                                "name": "output_folder",
-                                "displayName": "output_folder",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "88f4934c-77a0-4136-b526-fb47f5e6f1ae",
-                                "nodeId": "88f4934c-77a0-4136-b526-fb47f5e6f1ae",
-                                "type": "String",
-                                "name": "mode",
-                                "displayName": "mode",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "72ba3990-2dfd-4984-897e-9dce8dfa0a7c",
-                                "nodeId": "72ba3990-2dfd-4984-897e-9dce8dfa0a7c",
-                                "type": "Integer",
-                                "name": "splitter_arg",
-                                "displayName": "splitter_arg",
-                                "io": "input"
-                            },
-                            {
-                                "portId": "e47b4337-1e98-4b6b-8fd9-1de337c28eaf",
-                                "nodeId": "e47b4337-1e98-4b6b-8fd9-1de337c28eaf",
-                                "type": "Integer",
-                                "name": "n_overlap",
-                                "displayName": "n_overlap",
-                                "io": "input"
-                            }
-                        ],
-                        "outputs": [
-                        ],
-                        "name": "Video To Videos Split",
-                        "type": "custom",
-                        "namespace": {
-                            "functionName": "video_to_videos",
-                            "projectName": "templateTest",
-                            "serviceName": "video-to-videos",
-                            "moduleName": "video-to-videos",
-                            "packageName": "video-utils-trimming-OFIR"
-                        },
-                        "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
-                        "appName": "[Video Utils] - Trimming",
-                        "dpkName": "video-utils-trimming-OFIR",
-                        "metadata": {
-                            "position": {
-                                "x": 9847.5869140625,
-                                "y": 9955.09765625,
-                                "z": 0
-                            },
-                            "serviceConfig": {
-                                "initParams": {
-                                },
-                                "name": "video-to-videos",
-                                "moduleName": "video-to-videos",
-                                "runtime": {
-                                    "podType": "regular-xs",
-                                    "runnerImage": "dataloopai/dtlpy-agent:cpu.py3.8.opencv4.7",
-                                    "numReplicas": 1,
-                                    "concurrency": 10,
-                                    "pyPackages": {
-                                    },
-                                    "singleAgent": false,
-                                    "autoscaler": {
-                                        "type": "rabbitmq",
-                                        "minReplicas": 0,
-                                        "maxReplicas": 2,
-                                        "queueLength": 10
-                                    },
-                                    "preemptible": false
-                                },
-                                "maxAttempts": 3,
-                                "executionTimeout": 172800,
-                                "drainTime": 600,
-                                "onReset": "failed",
-                                "runExecutionAsProcess": false,
-                                "operation": "none"
-                            },
-                            "componentGroupName": "video-utils",
-                            "repeatable": true,
-                            "pipelineNodeName": "video_to_videos_split"
-                        }
-                    },
-                    {
-                        "id": "857933a8-e7fe-46e7-85ca-9d6dd6705d6c",
-                        "inputs": [
-                            {
-                                "portId": "202e6647-e264-4ada-b753-8e17fd8caaa8",
-                                "nodeId": "202e6647-e264-4ada-b753-8e17fd8caaa8",
-                                "type": "Item",
-                                "name": "item",
-                                "displayName": "item",
-                                "io": "input"
-                            }
-                        ],
-                        "outputs": [
-                            {
-                                "portId": "08ce0dcd-4fbd-4e9d-a145-c1aea342cf48",
-                                "nodeId": "08ce0dcd-4fbd-4e9d-a145-c1aea342cf48",
-                                "type": "Item",
-                                "name": "item",
-                                "displayName": "Complete",
-                                "actions": [
-                                    "completed",
-                                    "discard"
-                                ],
-                                "io": "output"
-                            }
-                        ],
-                        "name": "Labeling",
-                        "type": "task",
-                        "namespace": {
-                            "functionName": "move_to_task",
-                            "projectName": "DataloopTasks",
-                            "serviceName": "pipeline-utils",
-                            "moduleName": "default_module",
-                            "packageName": "pipeline-utils"
-                        },
-                        "projectId": "f8a4b8ce-5ff3-4386-84dc-1bda3a5bc92a",
-                        "metadata": {
-                            "position": {
-                                "x": 10159.3515625,
-                                "y": 9970.5,
-                                "z": 0
-                            },
-                            "repeatable": true
-                        }
-                    },
-                    {
-                        "id": "a012c6e2-ed5b-4c2b-95c2-72aa8ed09e56",
-                        "inputs": [
-                            {
-                                "portId": "d764a17f-5647-4776-8b47-b921b06dc738",
-                                "nodeId": "d764a17f-5647-4776-8b47-b921b06dc738",
-                                "type": "Item",
-                                "name": "item",
-                                "displayName": "item",
-                                "io": "input"
-                            }
-                        ],
-                        "outputs": [
-                            {
-                                "portId": "2ea761c8-dc5a-4d28-9a35-398c5b3de46e",
-                                "nodeId": "2ea761c8-dc5a-4d28-9a35-398c5b3de46e",
-                                "type": "Item",
-                                "name": "item",
-                                "displayName": "item",
-                                "color": "#12c92",
-                                "actions": [
-                                    "completed",
-                                    "in progress"
-                                ],
-                                "io": "output"
-                            }
-                        ],
-                        "name": "code",
-                        "type": "code",
-                        "namespace": {
-                            "functionName": "run",
-                            "projectName": "templateTest",
-                            "serviceName": "",
-                            "moduleName": null,
-                            "packageName": ""
-                        },
-                        "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
-                        "config": {
-                            "package": {
-                                "code": "import dtlpy as dl\n\nclass ServiceRunner:\n\n    def run(self, item):\n        return item\n",
-                                "name": "run",
-                                "type": "code",
-                                "codebase": {
-                                    "type": "item"
-                                }
-                            }
-                        },
-                        "metadata": {
-                            "position": {
-                                "x": 10553.63671875,
-                                "y": 9970.294921875,
-                                "z": 0
-                            },
-                            "repeatable": true
-                        }
-                    }
+                    "executionTimeout": 172800,
+                    "drainTime": 600,
+                    "onReset": "failed",
+                    "runExecutionAsProcess": false,
+                    "maxAttempts": 3,
+                    "operation": "none"
+                  },
+                  "componentGroupName": "image-utils",
+                  "repeatable": true,
+                  "pipelineNodeName": "wait_for_cycle"
+                }
+              },
+              {
+                "id": "93fe5a46-a212-4522-a836-d890cfb94290",
+                "inputs": [
+                  {
+                    "portId": "ebe10db6-d9ce-489f-8ab7-4650b02b6e0e",
+                    "nodeId": "ebe10db6-d9ce-489f-8ab7-4650b02b6e0e",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "item",
+                    "io": "input"
+                  },
+                  {
+                    "portId": "b788616e-82c3-449c-b8a1-d9298c34eaac",
+                    "nodeId": "b788616e-82c3-449c-b8a1-d9298c34eaac",
+                    "type": "String",
+                    "name": "output_folder",
+                    "displayName": "output_folder",
+                    "io": "input"
+                  },
+                  {
+                    "portId": "46967bcc-e821-4082-8006-deec84a7e21c",
+                    "nodeId": "46967bcc-e821-4082-8006-deec84a7e21c",
+                    "type": "String",
+                    "name": "mode",
+                    "displayName": "mode",
+                    "variableName": "mode",
+                    "io": "input"
+                  },
+                  {
+                    "portId": "452fb466-fa90-4565-9525-73423102b5e5",
+                    "nodeId": "452fb466-fa90-4565-9525-73423102b5e5",
+                    "type": "Integer",
+                    "name": "splitter_arg",
+                    "displayName": "splitter_arg",
+                    "io": "input"
+                  },
+                  {
+                    "portId": "db2a991e-fa3f-49c8-8086-30ad89cc9d00",
+                    "nodeId": "db2a991e-fa3f-49c8-8086-30ad89cc9d00",
+                    "type": "Integer",
+                    "name": "n_overlap",
+                    "displayName": "n_overlap",
+                    "io": "input"
+                  }
                 ],
-                "preview": "6656f2fd32f69653cbaae564",
-                "_id": "6656f77739cf8bb2dfa13e35"
-            }
+                "outputs": [
+                  {
+                    "portId": "1fbd786f-deca-43ab-8e9a-a9495c7f887e",
+                    "nodeId": "1fbd786f-deca-43ab-8e9a-a9495c7f887e",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "item",
+                    "io": "output"
+                  },
+                  {
+                    "portId": "1550704d-e184-43a1-8112-db7963beafb2",
+                    "nodeId": "1550704d-e184-43a1-8112-db7963beafb2",
+                    "type": "Item[]",
+                    "name": "items",
+                    "displayName": "items",
+                    "io": "output"
+                  }
+                ],
+                "name": "Video To Videos Split",
+                "type": "custom",
+                "namespace": {
+                  "functionName": "video_to_videos",
+                  "projectName": "templateTest",
+                  "serviceName": "template-test-video-to-videos-fp37",
+                  "moduleName": "video-to-videos",
+                  "packageName": "video-utils-trimming-OFIR"
+                },
+                "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
+                "appName": "[Video Utils] - Trimming",
+                "dpkName": "video-utils-trimming-OFIR",
+                "metadata": {
+                  "position": {
+                    "x": 9868.984102816528,
+                    "y": 9949.564088392355,
+                    "z": 0
+                  },
+                  "serviceConfig": {
+                    "initParams": {
+
+                    },
+                    "name": "video-to-videos",
+                    "moduleName": "video-to-videos",
+                    "runtime": {
+                      "podType": "regular-xs",
+                      "runnerImage": "dataloopai/dtlpy-agent:cpu.py3.8.opencv4.7",
+                      "numReplicas": 1,
+                      "concurrency": 10,
+                      "pyPackages": {
+
+                      },
+                      "singleAgent": false,
+                      "autoscaler": {
+                        "type": "rabbitmq",
+                        "minReplicas": 0,
+                        "maxReplicas": 2,
+                        "queueLength": 10
+                      },
+                      "preemptible": false
+                    },
+                    "maxAttempts": 3,
+                    "executionTimeout": 172800,
+                    "drainTime": 600,
+                    "onReset": "failed",
+                    "runExecutionAsProcess": false,
+                    "operation": "none"
+                  },
+                  "componentGroupName": "video-utils",
+                  "codeApplicationName": "template-test-video-to-videos-fp37",
+                  "repeatable": true,
+                  "pipelineNodeName": "video-to-videos"
+                }
+              },
+              {
+                "id": "53a19a0c-d8c6-4444-acd4-d737a722338e",
+                "inputs": [
+                  {
+                    "portId": "5321bcf7-859a-4132-940e-322e835d6b19",
+                    "nodeId": "5321bcf7-859a-4132-940e-322e835d6b19",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "item",
+                    "io": "input"
+                  },
+                  {
+                    "portId": "1491d780-ce35-4197-bc94-d59bd616747d",
+                    "nodeId": "1491d780-ce35-4197-bc94-d59bd616747d",
+                    "type": "Json",
+                    "name": "dql_filter",
+                    "displayName": "dql_filter",
+                    "io": "input"
+                  },
+                  {
+                    "portId": "d547402a-7ca6-4840-a214-d08aa74e6e44",
+                    "nodeId": "d547402a-7ca6-4840-a214-d08aa74e6e44",
+                    "type": "String",
+                    "name": "output_folder",
+                    "displayName": "output_folder",
+                    "io": "input"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "portId": "1f05349b-4b9b-4d1e-aad6-e24116c27fb3",
+                    "nodeId": "1f05349b-4b9b-4d1e-aad6-e24116c27fb3",
+                    "type": "Item",
+                    "name": "item",
+                    "displayName": "item",
+                    "io": "output"
+                  }
+                ],
+                "name": "Videos to Video Merge",
+                "type": "custom",
+                "namespace": {
+                  "functionName": "videos_to_video",
+                  "projectName": "templateTest",
+                  "serviceName": "template-test-videos-to-video-jipv",
+                  "moduleName": "videos-to-video",
+                  "packageName": "video-utils-stitching-OFIR"
+                },
+                "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
+                "appName": "[Video Utils] - Stitching",
+                "dpkName": "video-utils-stitching-OFIR",
+                "metadata": {
+                  "position": {
+                    "x": 10999.801811151943,
+                    "y": 9966.717924624672,
+                    "z": 0
+                  },
+                  "serviceConfig": {
+                    "initParams": {
+
+                    },
+                    "name": "videos-to-video",
+                    "moduleName": "videos-to-video",
+                    "runtime": {
+                      "podType": "regular-xs",
+                      "runnerImage": "dataloopai/dtlpy-agent:cpu.py3.8.opencv4.7",
+                      "numReplicas": 1,
+                      "concurrency": 10,
+                      "pyPackages": {
+
+                      },
+                      "singleAgent": false,
+                      "autoscaler": {
+                        "type": "rabbitmq",
+                        "minReplicas": 0,
+                        "maxReplicas": 2,
+                        "queueLength": 10
+                      },
+                      "preemptible": false
+                    },
+                    "maxAttempts": 3,
+                    "executionTimeout": 172800,
+                    "drainTime": 600,
+                    "onReset": "failed",
+                    "runExecutionAsProcess": false,
+                    "operation": "none"
+                  },
+                  "componentGroupName": "video-utils",
+                  "codeApplicationName": "template-test-videos-to-video-jipv",
+                  "repeatable": true,
+                  "pipelineNodeName": "videos-to-video"
+                }
+              }
+            ],
+            "preview": "6657481e6f08857d01c65a76",
+            "_id": "665748446f0885c014c65a7a"
+          }
         ]
     }
 }
