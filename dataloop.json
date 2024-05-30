@@ -5,7 +5,7 @@
         "Category": "Pipeline",
         "Pipeline Type": "Template"
     },
-    "displayName": "video-trim-and-stitch-pipeline",
+    "displayName": "Video Trim and Stitch Pipeline",
     "description": null,
     "scope": "organization",
     "components": {
@@ -165,11 +165,11 @@
                   "projectName": "templateTest",
                   "serviceName": "wait-service",
                   "moduleName": "wait_module",
-                  "packageName": "image-tiling-split-OFIR"
+                  "packageName": "image-tiling-split"
                 },
                 "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
                 "appName": "Image Tiling Split",
-                "dpkName": "image-tiling-split-OFIR",
+                "dpkName": "image-tiling-split",
                 "metadata": {
                   "position": {
                     "x": 10589.79296875,
@@ -280,11 +280,11 @@
                   "projectName": "templateTest",
                   "serviceName": "template-test-video-to-videos-fp37",
                   "moduleName": "video-to-videos",
-                  "packageName": "video-utils-trimming-OFIR"
+                  "packageName": "video-utils-trimming"
                 },
                 "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
                 "appName": "[Video Utils] - Trimming",
-                "dpkName": "video-utils-trimming-OFIR",
+                "dpkName": "video-utils-trimming",
                 "metadata": {
                   "position": {
                     "x": 9868.984102816528,
@@ -372,11 +372,11 @@
                   "projectName": "templateTest",
                   "serviceName": "template-test-videos-to-video-jipv",
                   "moduleName": "videos-to-video",
-                  "packageName": "video-utils-stitching-OFIR"
+                  "packageName": "video-utils-stitching"
                 },
                 "projectId": "098e7068-7c03-4206-8014-27f2a8d0f4bd",
                 "appName": "[Video Utils] - Stitching",
-                "dpkName": "video-utils-stitching-OFIR",
+                "dpkName": "video-utils-stitching",
                 "metadata": {
                   "position": {
                     "x": 10999.801811151943,
