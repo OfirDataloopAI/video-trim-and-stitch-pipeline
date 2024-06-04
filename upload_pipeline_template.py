@@ -37,7 +37,7 @@ def upload_template(project: dl.Project, app_name: str, template_name: str):
 
 def main():
     dl.setenv('rc')
-    project_id = "bb731b48-ae1a-45b9-8e60-4a62022090de"
+    project_id = "098e7068-7c03-4206-8014-27f2a8d0f4bd"
     app_name = "video-trim-and-stitch-pipeline"
     template_name = "vts-pipeline"
 
