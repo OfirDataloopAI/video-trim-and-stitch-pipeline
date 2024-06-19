@@ -8,12 +8,13 @@ def upload_template(project: dl.Project, app_name: str, template_name: str):
     dataloop_json_filepath = os.path.join(os.getcwd(), "dataloop.json")
     with open(dataloop_json_filepath, 'r') as jf:
         dataloop_json_data = json.load(fp=jf)
+    dpk = dl.Dpk.from_json(_json=dataloop_json_data, client_api=dl.client_api, project=project)
 
     # Update pipeline template json data
-    dataloop_json_data["name"] = app_name
-    dataloop_json_data["displayName"] = app_name
+    dpk.name = app_name
+    dpk.display_name = app_name
+    template_json_data = dpk.components.pipeline_templates[0]
 
-    template_json_data = dataloop_json_data["components"]["pipelineTemplates"][0]
     template_json_data["name"] = template_name
     template_json_data["projectId"] = project.id
     template_json_data["orgId"] = project.org["id"]
@@ -22,17 +23,10 @@ def upload_template(project: dl.Project, app_name: str, template_name: str):
             template_json_node["namespace"]["projectName"] = project.name
         template_json_node["projectId"] = project.id
 
-    # Overwrite pipeline template json data
-    with open(dataloop_json_filepath, 'w') as jf:
-        json.dump(obj=dataloop_json_data, fp=jf, indent=4)
-
     # Deploy pipeline template
-    dpk = project.dpks.publish()
+    dpk = project.dpks.publish(dpk=dpk)
     app = project.apps.install(dpk=dpk)
-    print(
-        f"Application ID: {dpk.id}\n"
-        f"Installation ID: {app.id}"
-    )
+    print(f"Application ID: {dpk.id}\nInstallation ID: {app.id}")
 
 
 def main():
